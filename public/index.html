@@ -1,0 +1,28 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2026 Rljson
+
+Use of this source code is governed by terms that can be
+found in the LICENSE file in the root of this package.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>cars-origin-client</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        margin: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="hello"><p>Loading …</p></main>
+    <script type="module">
+      import { showHello } from './cars-origin-client.js';
+      showHello(document.getElementById('hello'), (url) => fetch(url));
+    </script>
+  </body>
+</html>
