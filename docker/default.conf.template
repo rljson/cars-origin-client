@@ -1,0 +1,30 @@
+# @license
+# Copyright (c) 2026 Rljson
+#
+# Use of this source code is governed by terms that can be
+# found in the LICENSE file in the root of this package.
+
+# Serves the page and forwards /api to the master of its side.
+# ${MASTER_URL} and ${NGINX_LOCAL_RESOLVERS} are filled at container start.
+
+server {
+  listen 8080;
+  root /usr/share/nginx/html;
+
+  # Resolve the master at request time, so the page starts without it
+  resolver ${NGINX_LOCAL_RESOLVERS} valid=10s;
+
+  location = /health {
+    default_type text/plain;
+    return 200 'ok';
+  }
+
+  location /api/ {
+    set $master ${MASTER_URL};
+    proxy_pass $master;
+  }
+
+  location / {
+    try_files $uri /index.html;
+  }
+}
