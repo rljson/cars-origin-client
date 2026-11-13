@@ -19,10 +19,12 @@ Client website of the origin side of the cars example app, where catalogs are ca
 - The origin side of the cars example app has its own client website,
   where catalogs are captured originally
 - A static page served by nginx; it shows its own hello line and the
-  lines the master of its side answers on `/api/hello`, which nginx
-  forwards to `MASTER_URL`
-- `GET /health` answers `ok`; it runs as the container app
-  `ca-cars-origin-client-<stage>` in the stages `dev`, `test` and `prod`
+  lines the master of its side answers on `api/hello`, which nginx
+  forwards to `MASTER_URL`. The URL is relative to the page, so the page
+  works under any path, e.g. behind a proxy that serves it at
+  `/origin-client/` and strips that prefix
+- `GET /health` answers `ok`; it runs as a container in the stages
+  `dev`, `test` and `prod`
 
 ## Installation
 
@@ -47,10 +49,10 @@ The page shows `Hello from cars-origin-client` and the lines of the master.
 
 ### Container
 
-Build the image in the registry of the stage `dev`:
+Build the image in the registry `crcars`, tagged with the version:
 
 ```bash
-az acr build --registry crcarsdev --image cars-origin-client:<version>-<sha> .
+az acr build --registry crcars --image cars-origin-client:<version> .
 ```
 
 ## Limitations

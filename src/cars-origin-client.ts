@@ -8,7 +8,7 @@
 export const uiHello = 'Hello from cars-origin-client';
 
 /** The line shown when the master does not answer */
-export const noMaster = '(no answer from /api/hello yet)';
+export const noMaster = '(no answer from api/hello yet)';
 
 /** The fetch function the page uses; replaceable in tests */
 export type Fetch = (url: string) => Promise<{
@@ -18,13 +18,14 @@ export type Fetch = (url: string) => Promise<{
 
 /**
  * Loads all lines of the hello world: its own line first, then the lines
- * the master of its side answers on `/api/hello`
+ * the master of its side answers on `api/hello`. The URL is relative to
+ * the page, so the page works under any path, e.g. `/<name>/`
  * @param fetchFn - The fetch function to use
  * @returns The lines to show
  */
 export async function helloLines(fetchFn: Fetch): Promise<string[]> {
   try {
-    const res = await fetchFn('/api/hello');
+    const res = await fetchFn('api/hello');
     if (!res.ok) {
       return [uiHello, noMaster];
     }

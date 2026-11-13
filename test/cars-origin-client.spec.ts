@@ -26,13 +26,13 @@ describe('helloLines()', () => {
     expect(lines).toEqual([uiHello, 'a', 'b']);
   });
 
-  it('asks /api/hello', async () => {
+  it('asks api/hello relative to the page', async () => {
     const urls: string[] = [];
     await helloLines(async (url) => {
       urls.push(url);
       return { ok: true, json: async () => ({ lines: [] }) };
     });
-    expect(urls).toEqual(['/api/hello']);
+    expect(urls).toEqual(['api/hello']);
   });
 
   it('shows only its own line when the answer has no lines', async () => {

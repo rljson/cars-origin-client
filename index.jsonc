@@ -10,7 +10,7 @@
   "domain": ["static page in the browser; later syncs with the master of its side and ships as an Electron app", "container cars-origin-client, nginx, uid 1000, port 8080, GET /health"],
   "interfaces": {
     "uses": {
-      "cars-origin-master": "GET /api/hello over HTTP at MASTER_URL",
+      "cars-origin-master": "GET /api/hello over HTTP at MASTER_URL; the page asks api/hello relative to its own path",
     },
     "usedBy": {},
   },
