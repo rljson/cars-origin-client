@@ -22,7 +22,7 @@ Client-Website der Seite origin der cars-Beispiel-App, wo Kataloge ursprünglich
   Hello-Zeile und die Zeilen, die der Master ihrer Seite auf `/api/hello`
   antwortet; nginx leitet dorthin an `MASTER_URL` weiter
 - `GET /health` antwortet `ok`; sie läuft als Container App
-  `ca-cars-origin-client-<stage>` in den Stufen `dev`, `stage` und `prod`
+  `ca-cars-origin-client-<stage>` in den Stufen `dev`, `test` und `prod`
 
 ## Installation
 

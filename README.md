@@ -22,7 +22,7 @@ Client website of the origin side of the cars example app, where catalogs are ca
   lines the master of its side answers on `/api/hello`, which nginx
   forwards to `MASTER_URL`
 - `GET /health` answers `ok`; it runs as the container app
-  `ca-cars-origin-client-<stage>` in the stages `dev`, `stage` and `prod`
+  `ca-cars-origin-client-<stage>` in the stages `dev`, `test` and `prod`
 
 ## Installation
 
